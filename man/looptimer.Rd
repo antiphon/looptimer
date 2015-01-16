@@ -22,11 +22,11 @@ Approximative iteration speed, time left, and ETA.
 }
 \examples{
 N <- 100
-t0 <- timer()
+t0 <- looptimer()
 for(i in 1:N){
  # do something
  Sys.sleep(runif(1))
- t0 <- timer(t0, N, i, TRUE)
+ t0 <- looptimer(t0, N, i, TRUE)
  cat(t0$message,"\\n")
 }
 }
