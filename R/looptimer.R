@@ -28,9 +28,9 @@ looptimer <- function(tim, n, i, when_ready=FALSE){
   if(missing(tim)){
     tim <- list(tvec=NULL, speed=Inf)
   }else{
-    ti <- Sys.time()-tim$Tlast
+    ti <- difftime(Sys.time(), tim$Tlast, units="secs")
     tim$tvec <- c(tim$tvec, ti)
-    tim$speed <- mean(tim$tvec, trim = 0.1)
+    tim$speed <- mean(tim$tvec, trim = 0.1) ## speed in secs
     tim$eta <- NA
     tim$message <- NULL
     if(!missing(n)&!missing(i)) {
