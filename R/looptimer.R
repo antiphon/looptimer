@@ -24,7 +24,7 @@
 #' 
 #' 
 #' @export
-looptimer <- function(tim, n, i, when_ready=FALSE){
+looptimer <- function(tim, n, i, when_ready=TRUE){
   if(missing(tim)){
     tim <- list(tvec=NULL, speed=Inf)
   }else{
@@ -37,10 +37,11 @@ looptimer <- function(tim, n, i, when_ready=FALSE){
       tim$eta <- Sys.time()+tim$speed*(n-i)
       tim$left <- format(tim$eta-Sys.time(), digits = 2)
       end <- if(when_ready) paste0(", ready ", format(tim$eta),"]") else "]"
-      tim$message <- paste0("[",i,"/",n,"][ave time ", round(tim$speed,2), " secs, ", tim$left, " left", end)
+      tim$message <- paste0("[",i,"/",n,"][ave time ", format(tim$speed), " secs, ", tim$left, " left", end)
         
     }
   }
   tim$Tlast <- Sys.time()
+  class(tim) <- "looptimer"
   tim
 }
