@@ -4,7 +4,7 @@
 \alias{looptimer}
 \title{Loop timer}
 \usage{
-looptimer(tim, n, i, when_ready = TRUE, memory = 50)
+looptimer(tim, n, i, when_ready = TRUE, memory = 50, prefix = "")
 }
 \arguments{
 \item{tim}{Previous instance of timer to be updated}
@@ -16,6 +16,8 @@ looptimer(tim, n, i, when_ready = TRUE, memory = 50)
 \item{when_ready}{if true add ETA to message.}
 
 \item{memory}{How many iteration back remember when computing the average time}
+
+\item{prefix}{prefix for print message}
 }
 \description{
 For timing loops
@@ -36,4 +38,3 @@ for(i in 1:N){
 
 
 }
-

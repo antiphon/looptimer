@@ -7,6 +7,7 @@
 #' @param i iteration that was just finished
 #' @param when_ready if true add ETA to message.
 #' @param memory How many iteration back remember when computing the average time
+#' @param prefix prefix for print message
 #' @details
 #' Approximative iteration speed, time left, and ETA.
 #' 
@@ -23,10 +24,12 @@
 #' 
 #' 
 #' @export
-looptimer <- function(tim, n, i, when_ready=TRUE, memory=50){
+
+looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = ""){
   if(missing(tim)){
-    tim <- list(tvec=NULL, speed=Inf)
+    tim <- list(tvec=NULL, speed=Inf, prefix = prefix, when_ready = when_ready)
     if(!missing(n)) {tim$n <- n; tim$i <- 0}
+    tim$created <- Sys.time()
   }
   else{
     ti <- difftime(Sys.time(), tim$Tlast, units="secs")
@@ -42,9 +45,9 @@ looptimer <- function(tim, n, i, when_ready=TRUE, memory=50){
     if(!is.null(n) & !is.null(i)){
       tim$eta <- Sys.time()+tim$speed*(n-i)
       tim$left <- format(tim$eta-Sys.time(), digits = 2)
-      end <- if(when_ready) paste0(", ready ", format(tim$eta),"]") else "]"
-      tim$message <- paste0("[",i,"/",n,"][ave time ", format(tim$speed), " secs, ", tim$left, " left", end)
-        
+      end <- if(tim$when_ready) paste0(", ready ", format(tim$eta),"]") else "]"
+      tim$message <- paste0(tim$prefix, "[",i,"/",n,"][ave time ", 
+                            format(tim$speed), " secs, ", tim$left, " left", end)
     }
   }
   tim$Tlast <- Sys.time()

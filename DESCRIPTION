@@ -7,4 +7,4 @@ Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <first.last@iki.fi>
 Description: Timer for loops, for time-related output calculation.
 License: GPL
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
