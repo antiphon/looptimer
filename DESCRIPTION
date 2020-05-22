@@ -1,8 +1,8 @@
 Package: looptimer
 Type: Package
 Title: Timer for loops
-Version: 1.0
-Date: 2015-01-16
+Version: 1.1
+Date: 2020-05-22
 Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <first.last@iki.fi>
 Description: Timer for loops, for time-related output calculation.

@@ -8,6 +8,7 @@
 #' @param when_ready if true add ETA to message.
 #' @param memory How many iteration back remember when computing the average time
 #' @param prefix prefix for print message
+#' @param endline If print called, which endline character to use? Default '\n'. Usual alternative is something like '   \r'
 #' @details
 #' Approximative iteration speed, time left, and ETA.
 #' 
@@ -25,9 +26,9 @@
 #' 
 #' @export
 
-looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = ""){
+looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = "", endline = "\n"){
   if(missing(tim)){
-    tim <- list(tvec=NULL, speed=Inf, prefix = prefix, when_ready = when_ready)
+    tim <- list(tvec=NULL, speed=Inf, prefix = prefix, when_ready = when_ready, endline = endline)
     if(!missing(n)) {tim$n <- n; tim$i <- 0}
     tim$created <- Sys.time()
   }

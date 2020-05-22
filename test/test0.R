@@ -13,3 +13,8 @@ t3 <- looptimer(t0, n=5, i=2)
 t2 <- looptimer(t2)
 
 summary(t2)
+
+t4 <- looptimer(n = 10, endline = "  \r")
+for(i in 1:10) 
+  print(t4 <- looptimer(t4))
+summary(t4)

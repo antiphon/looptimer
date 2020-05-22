@@ -4,10 +4,12 @@
 #' @export
 
 print.looptimer <- function(x, ...){
+  #browser()
+  dev <- function(x) cat(x)#message(x, appendLF = FALSE)
   if(!is.null(x$message)){
-    cat(x$message, "\n")
+    dev(paste0(x$message, x$endline))
   }else{
-    if(!is.null(x$tvec)) cat(x$speed, "sec/iteration\n")
-    else cat("looptimer: no data.\n")
+    if(!is.null(x$tvec)) dev(paste0(x$speed, "sec/iteration", x$endline))
+    else                 dev(paste0("looptimer: no data.", x$endline))
   }
 }
