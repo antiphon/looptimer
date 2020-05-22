@@ -4,7 +4,7 @@
 #' @export
 
 print.looptimer <- function(x, ...){
-  #browser()
+  if(x$i %% x$printevery != 0) return()
   dev <- function(x) cat(x)#message(x, appendLF = FALSE)
   if(!is.null(x$message)){
     dev(paste0(x$message, x$endline))

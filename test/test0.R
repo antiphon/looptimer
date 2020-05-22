@@ -18,3 +18,12 @@ t4 <- looptimer(n = 10, endline = "  \r")
 for(i in 1:10) 
   print(t4 <- looptimer(t4))
 summary(t4)
+
+
+
+t4 <- looptimer(n = 30, endline = "  \r", printevery=3)
+for(i in 1:30) {
+  Sys.sleep(.5)
+  print(t4 <- looptimer(t4))
+}
+summary(t4)
