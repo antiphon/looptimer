@@ -29,8 +29,14 @@
 
 looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = "", endline = "\n", printevery = 1){
   if(missing(tim)){
-    tim <- list(tvec=NULL, speed=Inf, prefix = prefix, when_ready = when_ready, endline = endline, printevery = printevery)
-    if(!missing(n)) {tim$n <- n; tim$i <- 0}
+    tim <- list(tvec=NULL, 
+                speed=Inf, 
+                prefix = prefix, 
+                when_ready = when_ready, 
+                endline = endline, 
+                printevery = printevery,
+                i = 0)
+    if(!missing(n)) {tim$n <- n}
     tim$created <- Sys.time()
   }
   else{
