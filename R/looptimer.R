@@ -10,8 +10,11 @@
 #' @param prefix prefix for print message
 #' @param endline If print called, which endline character to use? Default '\n'. Usual alternative is something like '   \r'
 #' @param printevery Print every nth iteration only. Affects print-method.
+#' @param color Use ANSI color for the print text? Integer from 1 to 256.
+#' @param color_bg Use ANSI color for the print background? Integer from 1 to 256. Overrides 'color'.
 #' @details
 #' Approximative iteration speed, time left, and ETA.
+#' 
 #' 
 #' @examples
 #' 
@@ -27,7 +30,16 @@
 #' 
 #' @export
 
-looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = "", endline = "\n", printevery = 1){
+looptimer <- function(tim, n, i, when_ready=TRUE, 
+                      memory=50, prefix = "", 
+                      endline = "\n", printevery = 1,
+                      color = NULL,
+                      bg = NULL){
+  # from crayon
+  fgcodes <- c(paste0('\x1b[38;5;', 0:255, 'm'), '\x1b[39m')
+  bgcodes <- c(paste0('\x1b[48;5;', 0:255, 'm'), '\x1b[49m')
+  reset <- 257
+  #
   if(missing(tim)){
     tim <- list(tvec=NULL, 
                 speed=Inf, 
@@ -35,9 +47,17 @@ looptimer <- function(tim, n, i, when_ready=TRUE, memory=50, prefix = "", endlin
                 when_ready = when_ready, 
                 endline = endline, 
                 printevery = printevery,
-                i = 0)
+                i = 0,
+                start = "",
+                end   = "")
     if(!missing(n)) {tim$n <- n}
     tim$created <- Sys.time()
+    if(!is.null(color)) {
+      tim$start <- fgcodes[color[1]]
+      if(length(color)>1)
+        tim$start <- paste0(tim$start, bgcodes[color[2]])
+      tim$end <- paste0(fgcodes[reset], bgcodes[reset])
+    }
   }
   else{
     ti <- difftime(Sys.time(), tim$Tlast, units="secs")
