@@ -4,7 +4,18 @@
 \alias{looptimer}
 \title{Loop timer}
 \usage{
-looptimer(tim, n, i, when_ready = TRUE, memory = 50, prefix = "")
+looptimer(
+  tim,
+  n,
+  i,
+  when_ready = TRUE,
+  memory = 50,
+  prefix = "",
+  endline = "\\n",
+  printevery = 1,
+  fg = NULL,
+  bg = NULL
+)
 }
 \arguments{
 \item{tim}{Previous instance of timer to be updated}
@@ -18,6 +29,14 @@ looptimer(tim, n, i, when_ready = TRUE, memory = 50, prefix = "")
 \item{memory}{How many iteration back remember when computing the average time}
 
 \item{prefix}{prefix for print message}
+
+\item{endline}{If print called, which endline character to use? Default '\n'. Usual alternative is something like '   \r'}
+
+\item{printevery}{Print every nth iteration only. Affects print-method.}
+
+\item{fg}{Use ANSI color for the print text? Integer from 1 to 256.}
+
+\item{bg}{Use ANSI color for the print background? Integer from 1 to 256.}
 }
 \description{
 For timing loops
@@ -29,11 +48,11 @@ Approximative iteration speed, time left, and ETA.
 
 
 N <- 100
-t0 <- looptimer()
+t0 <- looptimer(n = N, fg = 2, prefix = "[testing]", printevery = 10)
 for(i in 1:N){
  # do something
  Sys.sleep(runif(1))
- print(  t0 <- looptimer(t0, N, i, TRUE) )
+ print(  t0 <- looptimer(t0) )
 }
 
 

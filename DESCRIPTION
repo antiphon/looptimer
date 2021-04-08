@@ -1,10 +1,10 @@
 Package: looptimer
 Type: Package
 Title: Timer for loops
-Version: 1.2
+Version: 1.2-1
 Date: 2021-04-08
 Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <first.last@iki.fi>
 Description: Timer for loops, for time-related output calculation.
 License: GPL
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1

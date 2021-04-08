@@ -6,6 +6,12 @@
 \usage{
 \method{summary}{looptimer}(x, ...)
 }
+\arguments{
+\item{x}{looptimer-object}
+}
 \description{
 Summary method for looptimer
+}
+\details{
+Prints the iterations, average time and the total time taken. Perhaps call after the loop.
 }
