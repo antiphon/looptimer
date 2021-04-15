@@ -8,7 +8,7 @@
 #' @param when_ready if true add ETA to message.
 #' @param memory How many iteration back remember when computing the average time
 #' @param prefix prefix for print message
-#' @param endline If print called, which endline character to use? Default '\n'. Usual alternative is something like '   \r'
+#' @param endline If print called, which endline character to use? Default '\\n'. Usual alternative is something like '   \\r'
 #' @param printevery Print every nth iteration only. Affects print-method.
 #' @param fg Use ANSI color for the print text? Integer from 1 to 256.
 #' @param bg Use ANSI color for the print background? Integer from 1 to 256.
@@ -53,11 +53,11 @@ looptimer <- function(tim, n, i, when_ready=TRUE,
     tim$created <- Sys.time()
     if(!is.null(fg)) {
       tim$start <- paste0(tim$start, fgcodes[fg])
-      tim$end   <- paste0(tim$end,   fgcodes[reset])
+      tim$end   <- paste0(fgcodes[reset], tim$end)
     }
     if(!is.null(bg)) {
       tim$start <- paste0(tim$start, bgcodes[bg])
-      tim$end   <- paste0(tim$end,   bgcodes[reset])
+      tim$end   <- paste0(bgcodes[reset], tim$end)
     }
   }
   else{

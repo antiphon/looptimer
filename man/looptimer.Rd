@@ -30,7 +30,7 @@ looptimer(
 
 \item{prefix}{prefix for print message}
 
-\item{endline}{If print called, which endline character to use? Default '\n'. Usual alternative is something like '   \r'}
+\item{endline}{If print called, which endline character to use? Default '\\n'. Usual alternative is something like '   \\r'}
 
 \item{printevery}{Print every nth iteration only. Affects print-method.}
 
