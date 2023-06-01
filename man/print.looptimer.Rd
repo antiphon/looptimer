@@ -6,6 +6,11 @@
 \usage{
 \method{print}{looptimer}(x, ...)
 }
+\arguments{
+\item{x}{looptimer object}
+
+\item{...}{ignored}
+}
 \description{
 Print method for looptimer
 }
