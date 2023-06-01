@@ -14,7 +14,8 @@ looptimer(
   endline = "\\n",
   printevery = 1,
   fg = NULL,
-  bg = NULL
+  bg = NULL,
+  use_msg = TRUE
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ looptimer(
 \item{fg}{Use ANSI color for the print text? Integer from 1 to 256.}
 
 \item{bg}{Use ANSI color for the print background? Integer from 1 to 256.}
+
+\item{use_msg}{Use message for printing? Default is TRUE. If not, use cat}
 }
 \description{
 For timing loops
